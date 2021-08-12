@@ -16,6 +16,8 @@ export interface IFoodProp {
   image: string;
 }
 
+export type IDataForm = Omit<IFoodProp, 'id'>;
+
 const Dashboard: React.FC = () => {
   const [foods, setFoods] = useState<IFoodProp[]>([] as IFoodProp[]);
   const [editingFood, setEditing] = useState<IFoodProp>({} as IFoodProp);
@@ -27,7 +29,7 @@ const Dashboard: React.FC = () => {
     response.then((res) => setFoods(res.data));
   }, []);
 
-  const handleAddFood = async (food: IFoodProp) => {
+  const handleAddFood = async (food: IDataForm) => {
     try {
       const response = await api.post('/foods', {
         ...food,

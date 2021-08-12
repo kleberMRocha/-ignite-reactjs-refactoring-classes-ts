@@ -8,6 +8,7 @@ import { IconType } from 'react-icons/lib';
 interface IInput {
   name: string;
   icon?: IconType;
+  placeholder?: string;
 }
 
 const Input: React.FC<IInput> = ({ name, icon: Icon, ...rest }) => {
